@@ -1,5 +1,11 @@
 <template>
   <div id="map" style="width:100%;height:100vh"></div>
+  <button
+      @click="calibrateMarkers"
+      style="position:absolute;top:10px;left:10px;z-index:5"
+  >
+    Calibrate
+  </button>
 </template>
 
 <script setup>
@@ -18,8 +24,8 @@ onMounted(async () => {
   AdvancedMarkerElement = markerLib.AdvancedMarkerElement
 
   initMap(Map)
-  addOverlay()
   addMarkers()
+  addOverlay()
 })
 
 function initMap(Map) {
@@ -66,4 +72,32 @@ function addOverlay() {
   map.fitBounds(bounds)
 }
 
+function calibrateMarkers() {
+  if (isCalibrated.value) return
+  const sheet = planSheets.find(p => p.mapOverLay)
+  const b = sheet.mapOverLay.planSheetBound
+  const proj = overlay.getProjection()
+
+  const subset = markers.filter(m => m.currentLayout === sheet.uniqueId)
+
+  const sw = proj.fromLatLngToContainerPixel(
+      new google.maps.LatLng(b.bottomLeft.latitude, b.bottomLeft.longitude))
+  const ne = proj.fromLatLngToContainerPixel(
+      new google.maps.LatLng(b.topRight.latitude, b.topRight.longitude))
+
+  const imgW = ne.x - sw.x
+  const imgH = sw.y - ne.y
+
+  subset.forEach((m, idx) => {
+    const relX = m.px / 4896
+    const relY = m.py / 3672
+    const xPx = sw.x + relX * imgW
+    const yPx = ne.y + relY * imgH
+    const latLng = proj.fromContainerPixelToLatLng(
+        new google.maps.Point(xPx, yPx))
+
+    gMarkers[idx].position = latLng
+  })
+  isCalibrated.value = true
+}
 </script>
