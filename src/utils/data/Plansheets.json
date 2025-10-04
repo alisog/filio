@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Construction phase",
+    "url": "https://visual.filio.io/r3m6cPCz06PhZRgpCCl1/f-681807ccefb5641f0c18c913=s0-layout",
+    "uniqueId": "f-681807ccefb5641f0c18c913",
+    "positionId": 3,
+    "orientation": 0,
+    "isArchived": false,
+    "mapOverLay": null,
+    "archived": false
+  },
+  {
+    "name": "Renovation phase",
+    "url": "https://visual.filio.io/r3m6cPCz06PhZRgpCCl1/55ESqEuKAMQSVyTUXvIv=s0-layout",
+    "uniqueId": "55ESqEuKAMQSVyTUXvIv",
+    "positionId": 2,
+    "orientation": 0,
+    "isArchived": false,
+    "mapOverLay": null,
+    "archived": false
+  },
+  {
+    "name": "Demo Phase",
+    "url": "https://visual.filio.io/r3m6cPCz06PhZRgpCCl1/CpwCkxxaRCKM39Rx4XOL=s0-layout",
+    "uniqueId": "CpwCkxxaRCKM39Rx4XOL",
+    "positionId": 1,
+    "orientation": 0,
+    "isArchived": false,
+    "mapOverLay": {
+      "planSheetBound": {
+        "topLeft": {
+          "latitude": 38.74599935021595,
+          "longitude": -77.17335323366679
+        },
+        "bottomRight": {
+          "latitude": 38.72691700632791,
+          "longitude": -77.14141454045125
+        },
+        "topRight": {
+          "latitude": 38.74606901126703,
+          "longitude": -77.14148335131023
+        },
+        "bottomLeft": {
+          "latitude": 38.726847326594935,
+          "longitude": -77.17328442280784
+        }
+      },
+      "opacity": "1"
+    },
+    "archived": false
+  }
+]
